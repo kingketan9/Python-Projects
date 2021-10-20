@@ -1,21 +1,17 @@
 import random
+randNo = random.randint(1,100)
+userGuess = None
+guesses = 0
 
-def comp_guess(x):
-    guesses = 0
-    low = 1
-    high = x
-    feedback = ''
-    while feedback != 'c':
-        if(low != high):
-            guess = random.randint(low,high)
+while (userGuess != randNo):
+    userGuess = int(input("Enter your guess: "))
+    guesses = guesses + 1
+    if(userGuess == randNo):
+        print("You guessed it right!")
+    else:
+        if(userGuess>randNo):
+            print("You guessed it wrong!\nEnter a smaller number")
         else:
-            guess = high # high = low
-        feedback = input(f"Is {guess} too high(h), too low(l), or correct(c)")
-        if(feedback == 'h'):
-            high = guess - 1
-        elif(feedback == 'l'):
-            low = guess + 1
-        guesses = guesses + 1
-
-    print(f"The computer guessed your number,{guess} in {guesses} guesses correctly!")
-comp_guess(1000)
+            print("You guessed it wrong!\nEnter a larger number")
+    
+print(f"You guessed the number in {guesses} guesses")
